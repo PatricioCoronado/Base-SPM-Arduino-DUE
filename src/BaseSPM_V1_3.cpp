@@ -1208,7 +1208,8 @@ void pc_sensor_temperatura_humedad(void)
 	float Humedad;
 	Temperatura = SHT11.readTemperatureC();
 	Humedad = SHT11.readHumidity();
-	sprintf(Datos,"%s %5.1f H%5.1f",FTEMPERATURA,Temperatura,Humedad);
+	sprintf(Datos,"T%5.1f H%5.1f",Temperatura,Humedad);
+	//sprintf(Datos,"%s %5.1f H%5.1f",FTEMPERATURA,Temperatura,Humedad);
 	// Envía valores por el puerto
 	Println(Datos)
 #endif
@@ -1218,7 +1219,8 @@ void pc_sensor_temperatura_humedad(void)
 	//DHT dht(SEN_DATA, DHT22);
 	float Humedad = dht.readHumidity();
   	float Temperatura = dht.readTemperature();
-  	sprintf(Datos,"%s %5.1f H%5.1f",FTEMPERATURA,Temperatura,Humedad);
+	  sprintf(Datos,"T%5.1f H%5.1f",Temperatura,Humedad);
+  	//sprintf(Datos,"%s %5.1f H%5.1f",FTEMPERATURA,Temperatura,Humedad);
 	// Check if any reads failed and exit early (to try again).
   	if (isnan(Humedad) || isnan(Temperatura))
 	{
@@ -1257,7 +1259,8 @@ void pc_sensor_temperatura_humedad(void)
 		if (Humedad < 0.0)   Humedad= 0.0;
 		if (Humedad > 100.0) Humedad = 100.0;
 		//Envía los datos por el puerto
-		sprintf(Datos,"%s %5.1f H%5.1f",FTEMPERATURA,Temperatura,Humedad);
+		sprintf(Datos,"T%5.1f H%5.1f",Temperatura,Humedad);
+		//sprintf(Datos,"%s %5.1f H%5.1f",FTEMPERATURA,Temperatura,Humedad);
 		Println(Datos);
 	}
 	else BaseScpi.errorscpi(24);//Error no hay sensor conectado
@@ -1269,7 +1272,8 @@ void pc_sensor_temperatura_humedad(void)
 		char Datos[128];
 		float Temperatura,Humedad;
 		bme.readHumidityTemperature(&Temperatura,&Humedad);
-		sprintf(Datos,"%s %5.1f H%5.1f",FTEMPERATURA,Temperatura,Humedad);
+		sprintf(Datos,"T%5.1f H%5.1f",Temperatura,Humedad);
+		//sprintf(Datos,"%s%5.1f H%5.1f",FTEMPERATURA,Temperatura,Humedad);
 		Println(Datos);
 	}
 	else BaseScpi.errorscpi(24);//Error no hay sensor conectado
