@@ -194,6 +194,7 @@ void pc_fin_fotodiodo(void);
 void pc_inicia_acelerometro(void);
 void pc_fin_acelerometro(void);
 void pc_activa_48v(); //Activa/desactiva ed DC/DC 48V
+void pc_sensor_bme280(void);
 //Funciones scpi comunes a todos los sistemas
 void errorSCPI(void);
 void opcSCPI(void);
@@ -305,6 +306,7 @@ tipoNivel MOTORES[] = //Comandos del PC que hacen funcionar el sistema
 	SCPI_COMANDO(MOTORACTIVO,MA,pc_motor_activo)//Cambia el motor seleccionado
 	SCPI_COMANDO(RESOLUCION,RE,pc_resolucion)//Cambia la resolución
 	SCPI_COMANDO(SENT,SE,pc_sentido)//Para cambiar el sentido
+	SCPI_COMANDO(BME280,BM,pc_sensor_bme280)//Lee el sensor de humedad y temperatura BME280 
 	SCPI_COMANDO(CONTADOR,CO,pc_contador)//Contador que se inicializa trás un comando de "marcha"
 	SCPI_COMANDO(ACELEROM,AC,pc_acelerometro)//Lee el acelerómetro
 	SCPI_COMANDO(INIFOT,IFO,pc_inicia_fotodiodo)//El fotodiodo envia datos cada 200ms
@@ -565,3 +567,4 @@ int Periodo[]={1000, 1000, 500, 333, 250, 200, 167, 143, 125, 111, 100, 91, 83,
 #define FSTOP              "ZP" //Mensaje de parada. Se envía para informar de parada de motor
 #define FBLUETOOTHESTADO   "YY" //void  bluetooth_estado(void)
 #define FESTADO48V         "JJ" //La cadena es 1 o 0 estado del DC/DC activo o no
+#define BME280             "UA" //Respuesta del sensor MBE280
